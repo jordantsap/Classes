@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Javascript Classes</title>
+</head>
+<body>
+  <!-- <h1>Basics</h1> --->
+  <!-- <h1 id="title">Getters - Setters</h1> -->
+  <!-- <h1 id="title">Static Methods</h1> -->
+  <!-- <h1 id="title">Inheritance & Extends</h1> -->
+  <!-- <h1 id="title">Polymorphism</h1> -->
+  <h1 id="title">HTML List Binding</h1>
+  <ul id="mylist">
+    <!-- filled with JavaScript -->
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+
+<script>
+
+  /*Basics*/ 
+  // // create a definition of a class and then from there you can instantiate it using the "new" keyword followed by the class name. You can think of a class as being a specified structure of what the eventual object HAS and also what it DOES.
+  // // In this video I take you through a simple and easy to understand example of defining a class called "Rectangle" and then creating different objects based off of it. I explain how instance properties/variables, instance methods and how constructors work - along with the "this" keyword.
+  // /*
+  //   Class -> Object
+  //
+  //   Properties -> What they have: name, age, height
+  //
+  //   Instance Methods: what they do walk, talk, run
+  // */
+  //
+  // class Human {
+  //   // setup object
+  //   constructor (fname, lname, age, weight, height) { // add attributes to enable
+  //     console.log('Human created in constructor');
+  //     // use direct value definition or add attributes/variables definition to enable inputting
+  //     this.fname = fname; // 'John'
+  //     this.lname = lname; // 'John'
+  //     this.age = age; // 23
+  //     this.height = height;// 1.83
+  //     this.weight = weight;
+  //   }
+  //
+  //   // instance methods
+  //   getFullName () {
+  //     return this.fname + ' ' + this.lname;
+  //   }
+  //
+  //   printDescription () {
+  //     console.log(`${human.fname} is in love with ${human2.fname}`);
+  //   }
+  // }
+  // // create new istance of the class to 'play' with it
+  // const human = new Human('Jordan', 'Tsap', 38, 1.90, 78);
+  // // new object to see difference in values
+  // const human2 = new Human('Elen', 'Karvela', 39, 1.60, 60);
+  // console.log(human.getFullName());
+  // console.log(human2.getFullName());
+  // human.printDescription();
+  // -----------------------
+
+  /*Getters - Setters*/
+  // // use "getters" and "setters" within your class definitions to bind a function to a property. Both "getters" and "setters" behave like regular properties so you are able to get and set instance properties but you are able to define your own function to modify the behaviour.
+  // // They can be useful when you have a class with multiple instance properties and you'd like to compute/set a value while still maintaining loose coupling.
+  //
+  // class Square {
+  //   constructor (width) {
+  //     this.width = width;
+  //     this.height = width;
+  //     // initialize requests for area
+  //     this.reqforarea = 0;
+  //   }
+  //
+  //   // getter function
+  //   get area () {
+  //     //increment requests initialy from 0
+  //     this.reqforarea++;
+  //     return this.width * this.height;
+  //   }
+  //
+  //   //setter
+  //   set area (area) {
+  //     this.width = Math.sqrt(area);
+  //     this.height = this.width;
+  //   }
+  // } // class end
+  //
+  // let square1 = new Square(4);
+  // square1.area = 25;
+  // // console.log(square1.area);
+  // // console.log(square1.width);
+  // // console.log(square1.height);
+  //
+  // //request area for x num of times
+  // console.log(square1.area);
+  // console.log(square1.area);
+  // console.log(square1.area);
+  // console.log(square1.area);
+  //
+  // // display number of requests
+  // console.log(square1.reqforarea);
+  // ----------------------
+
+  /*Static Methods*/
+  // // In JavaScript you can define "static methods" or "static functions" which are functions that are defined on a class but do not actually require an instance of that class to be created.
+  // // In most cases, static methods are "helper methods" or used for creating instances of that class.
+  // // How you can define static methods on a class - we create a method used to compare two instances to give a result.
+  //
+  // class Square {
+  //   constructor (width) {
+  //     this.width = width;
+  //     this.height = width;
+  //   }
+
+  //   static equals (a, b){
+  //     // check if are the same
+  //     return a.width * a.height === b.width * b.height;
+  //   }
+
+  //   static isValidDimentions(width, height) {
+  //     return width === height;
+  //   }
+  // }
+  
+  // // comment 2 lines below to prove that static methods do not actually require an instance of that class to be created
+  // // let square1 = new Square(8);
+  // // let square2 = new Square(8);
+  
+  // console.log(Square.isValidDimentions(6, 6));
+  // -----------------------
+  
+  /*Inheritance & Extends*/
+  // // By using the "extends" keyword with JavaScript classes you are able to create inheritance which is where you have a child class that inherits the instance properties and methods of its parent class.
+  // // You'd typically use a feature like this on the server-side with NodeJS as this can be considered to be a complex design - although classes can be used to represent similar visual components on the front-end.
+  // // make use of the extends keyword to achieve inheritance - create a "child" version of a Person class, a Programmer.  programmer has all the features of a person but with a little but extra!
+
+  // // Parent- child class
+  // class Person {
+  //   constructor (name, age) {
+  //     this.name = name;
+  //     this.age = age;
+  //   }
+
+  //   describe() {
+  //     console.log(`I am ${this.name} and ${this.age} years old`);
+      
+  //   }
+  // }
+  // class Programmer extends Person {
+  //   constructor (name, age, yearsOfExperience) {
+  //     // embed the parent class constractor attribute
+  //     super(name, age);
+
+  //     // custom behaviour
+  //     this.yearsOfExperience = yearsOfExperience;
+  //   }
+
+  //   code () {
+  //     console.log(this.name + ' is coding');
+      
+  //   }
+  // }
+  // // create class instances
+  // const person1 = new Person('Jeff', 25);
+  // const programmer1 = new Programmer('John', 38, 6);
+
+  // // console.log(person1);
+  // // console.log(programmer1.code());
+  // // console.log(programmer1.describe());
+  
+  // // inheritance test
+  // //person1.code(); // main class to child function not working
+  // // main class/method working
+  // person1.describe()
+  // // extended child class ok
+  // programmer1.code()
+  // programmer1.describe()
+  
+
+  // const programmers = [
+  //   new Programmer('John', 24, 4),
+  //   new Programmer('Jack', 25, 5)
+  // ]
+
+  // function developSoftware (programmers) {
+  //   // Software Development
+  //   for (let programmer of programmers ) {
+  //     programmer.code();
+  //   }
+  // }
+  // developSoftware(programmers);
+  // ---------------
+
+  /*Polymorphism*/
+  // // Polymorphism is the act of overriding methods within a derived class. Suppose you have a class called "CA" with a method "MA" on it - if you were to now create a child class of "CA" and then re-define the method "MA" on it, this would be polymorphism.
+  // // It is a commonly used technique when dealing with derived classes as in a lot of cases, the child class will be performing the same actions as its parent, but with a little extra.
+  // // Here is a simple example of polymorphism using the typical "Animal" class. I also demonstrate how you can call the parent-defined method through the use of "super".
+
+  //   class Animal {
+  //     constructor (name) {
+  //       this.name = name;
+  //     }
+
+  //     makeSound () {
+  //       console.log('Generic sound');
+  //     }
+  //   }
+
+  //   class Dog extends Animal {
+  //     constructor(name) {
+  //       super(name);
+  //     }
+
+  //     makeSound () {
+  //       // we can use everything (method, property) from the parent class as well
+  //       super.makeSound();
+  //       console.log('Wooffff');
+  //     }
+
+  //   }
+  //   const animal = new Animal('Dom');
+  //   const animal2 = new Dog('Gef');
+
+  //   animal.makeSound();
+  //   // in the child class if the method makeSound() does not exist, it will use the parent class method
+  //   animal2.makeSound();
+  // --------------
+
+  /*HTML Binding*/
+  // use a JavaScript class in order to create a direct binding to an HTML element. 
+  // define a JavaScript class that has the appropriate instance properties and methods to directly manipulate a standard HTML list (UL or OL). We create the HTML element, give it an ID and then simply pass it into the constructor for our custom designed class. From there we can add and remove entries (list items) to and from the list.
+  // This can be very useful when developing custom user interfaces for your next web project as it allows you to seamlessly integrate with the UI from the application logic.
+
+
+  class ListBinding {
+    constructor(element) {
+      this.listElement = element;
+      this.textList = [];
+    }
+
+    update() {
+      // remove all existing li elements/tags
+      while (this.listElement.firstChild) {
+        this.listElement.removeChild(this.listElement.firstChild);
+      }
+
+    }
+
+  }
+  const mylist = document.getElementById('mylist');
+
+  const listbinding = new ListBinding(mylist);
+
+</script>
+</body>
+</html>
